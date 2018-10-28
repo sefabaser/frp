@@ -14,7 +14,7 @@ export class Armor {
     this.agilityPenalty = definition.agilityPenalty;
   }
 
-  roll(): number {
+  protect(): number {
     let d8Count = Math.floor(this.armorClass / 3);
     let d6 = this.armorClass % 3 === 2;
     let d4 = this.armorClass % 3 === 1;
