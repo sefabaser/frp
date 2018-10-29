@@ -22,7 +22,7 @@ export class Shield {
     this.agilityPenalty = definition.agilityPenalty;
   }
 
-  block(): number {
+  getBlock(): number {
     if (this.currentHp > 0 && Dice.roll(this.dice) !== DiceResult.fail) {
       return 1;
     } else {
@@ -30,7 +30,7 @@ export class Shield {
     }
   }
 
-  getDamage() {
+  receiveDamage() {
     this.currentHp--;
   }
 }

@@ -6,19 +6,21 @@ import { WeaponDefinition, WeaponReaching } from './weapon';
 const WoodenHitPoint = 1;
 const SteelHitPoint = 4;
 
-export const Shilds: { [key: string]: ShieldDefinition } = {
-  woodenSmallShield: { dice: DiceType.d6, hitPoint: WoodenHitPoint, agilityPenalty: 0 },
-  steelSmallShield: { dice: DiceType.d6, hitPoint: SteelHitPoint, agilityPenalty: 1 },
-  woodenLargeShield: { dice: DiceType.d8, hitPoint: WoodenHitPoint + 1, agilityPenalty: 1 },
-  steelLargeShield: { dice: DiceType.d8, hitPoint: SteelHitPoint + 1, agilityPenalty: 2 }
-};
+export class Shields {
+  static woodenSmallShield: ShieldDefinition = { dice: DiceType.d6, hitPoint: WoodenHitPoint, agilityPenalty: 0 };
+  static steelSmallShield: ShieldDefinition = { dice: DiceType.d6, hitPoint: SteelHitPoint, agilityPenalty: 1 };
+  static woodenLargeShield: ShieldDefinition = { dice: DiceType.d8, hitPoint: WoodenHitPoint + 1, agilityPenalty: 1 };
+  static steelLargeShield: ShieldDefinition = { dice: DiceType.d8, hitPoint: SteelHitPoint + 1, agilityPenalty: 2 };
+}
 
 export class HeadArmors {
+  static none: ArmorDefinition = { armorClass: 0, agilityPenalty: 0 };
   static cap: ArmorDefinition = { armorClass: 1, agilityPenalty: 0 };
   static helm: ArmorDefinition = { armorClass: 2, agilityPenalty: 1 };
 }
 
 export class BodyArmors {
+  static none: ArmorDefinition = { armorClass: 0, agilityPenalty: 0 };
   static leather: ArmorDefinition = { armorClass: 2, agilityPenalty: 0 };
   static chain: ArmorDefinition = { armorClass: 3, agilityPenalty: 1 };
   static plate: ArmorDefinition = { armorClass: 4, agilityPenalty: 2 };

@@ -39,28 +39,18 @@ export class Unit {
   }
 
   getAttack(): UnitAttackReport {
-    let result = {
+    return {
       main: this.mainHand.getAttack(),
-      secondary: null
+      secondary: this.offHand instanceof Weapon ? this.offHand.getAttack() : { hit: 0, crictical: 0 }
     };
-
-    if (this.offHand instanceof Weapon) {
-      result.secondary = this.offHand.getAttack();
-    }
-
-    return result;
   }
 
   getDefence(): UnitDefenceReport {
-    let result = {
+    return {
       protection: this.head.getProtection() + this.body.getProtection(),
-      block: 0,
-      parry: 0
+      block: this.offHand instanceof Shield ? this.offHand.getBlock() : 0,
+      parry: this.mainHand.getParry() + (this.offHand instanceof Weapon ? this.offHand.getParry() : 0)
     };
-
-
-
-    return result;
   }
 
   receiveDamage(damage) {
