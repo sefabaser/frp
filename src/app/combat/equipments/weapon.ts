@@ -1,11 +1,11 @@
 import { DiceType, Dice, DiceResult } from '../combat-mechanism/dice';
-import { Attack } from '../combat-mechanism/combat-models';
+import { Attack } from '../combat-mechanism/combat.model';
 
 export enum WeaponReaching {
-  none = 'none',
-  short = 'short',
-  long = 'long',
-  reaching = 'reaching'
+  none = 0,
+  short = 1,
+  long = 2,
+  reaching = 3
 }
 
 export interface WeaponDefinition {
@@ -70,5 +70,9 @@ export class Weapon {
 
   receiveDamage() {
     this.currentHp--;
+  }
+
+  isReachingMoreThan(reaching: WeaponReaching): boolean {
+    return this.reaching > reaching;
   }
 }

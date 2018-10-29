@@ -2,9 +2,10 @@ import { Armor, ArmorDefinition } from '../equipments/armor';
 import { Weapon, WeaponDefinition } from '../equipments/weapon';
 import { Shield, ShieldDefinition } from '../equipments/shield';
 import { Weapons } from '../equipments/definitions';
-import { UnitAttackReport, UnitDefenceReport } from '../combat-mechanism/combat-models';
+import { UnitAttackReport, UnitDefenceReport } from '../combat-mechanism/combat.model';
 
 export interface UnitDefinition {
+  name: string;
   hitPoint: number;
   head?: ArmorDefinition;
   body?: ArmorDefinition;
@@ -18,12 +19,14 @@ export class Unit {
   readonly hitpoint: number;
   private currentHp: number;
 
+  readonly name: string;
   head: Armor;
   body: Armor;
   mainHand: Weapon;
   offHand: Weapon | Shield | null;
 
   constructor(definition: UnitDefinition) {
+    this.name = definition.name;
     this.head = new Armor(definition.head);
     this.body = new Armor(definition.body);
     this.mainHand = new Weapon(definition.mainHand || Weapons.unarmed);
