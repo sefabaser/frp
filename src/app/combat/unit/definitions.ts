@@ -1,7 +1,7 @@
 import { UnitDefinition } from './unit';
 import { HeadArmors, BodyArmors, Weapons, Shields } from '../equipments/definitions';
 
-const HumanHp = 8;
+const HumanHp = 4;
 
 export class Units {
   static unarmed: UnitDefinition = {
@@ -42,5 +42,15 @@ export class Units {
     mainHand: Weapons.spear,
     offHandWeapon: undefined,
     shield: Shields.woodenSmallShield
+  };
+
+  static twoHandedSwordsman: UnitDefinition = {
+    name: 'Two Handed Swordsman',
+    hitPoint: HumanHp,
+    head: HeadArmors.cap,
+    body: BodyArmors.chain,
+    mainHand: Weapons.greatSword,
+    offHandWeapon: undefined,
+    shield: undefined
   };
 }

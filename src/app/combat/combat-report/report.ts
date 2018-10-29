@@ -4,7 +4,7 @@ import { CombatScene } from './scene';
 
 export class CombatReport {
   constructor() {
-    this.createCombatScene(Units.spearman, Units.spearman);
+    this.createCombatScene(Units.twoHandedSwordsman, Units.spearman);
   }
 
   private createCombatScene(unit1: UnitDefinition, unit2: UnitDefinition) {
