@@ -10,11 +10,18 @@ export class Armor {
   readonly agilityPenalty: number;
 
   constructor(definition: ArmorDefinition) {
+    if (!definition) {
+      definition = {
+        armorClass: 0,
+        agilityPenalty: 0
+      };
+    }
+
     this.armorClass = definition.armorClass;
     this.agilityPenalty = definition.agilityPenalty;
   }
 
-  protect(): number {
+  getProtection(): number {
     let d8Count = Math.floor(this.armorClass / 3);
     let d6 = this.armorClass % 3 === 2;
     let d4 = this.armorClass % 3 === 1;

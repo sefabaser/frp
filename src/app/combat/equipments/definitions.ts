@@ -1,8 +1,10 @@
 import { DiceType } from '../combat-mechanism/dice';
-import { WoodenHitPoint, SteelHitPoint } from './config';
 import { ArmorDefinition } from './armor';
 import { ShieldDefinition } from './shield';
 import { WeaponDefinition, WeaponReaching } from './weapon';
+
+const WoodenHitPoint = 1;
+const SteelHitPoint = 4;
 
 export const Shilds: { [key: string]: ShieldDefinition } = {
   woodenSmallShield: { dice: DiceType.d6, hitPoint: WoodenHitPoint, agilityPenalty: 0 },
@@ -11,19 +13,19 @@ export const Shilds: { [key: string]: ShieldDefinition } = {
   steelLargeShield: { dice: DiceType.d8, hitPoint: SteelHitPoint + 1, agilityPenalty: 2 }
 };
 
-export const HeadArmors: { [key: string]: ArmorDefinition } = {
-  cap: { armorClass: 1, agilityPenalty: 0 },
-  helm: { armorClass: 2, agilityPenalty: 1 }
-};
+export class HeadArmors {
+  static cap: ArmorDefinition = { armorClass: 1, agilityPenalty: 0 };
+  static helm: ArmorDefinition = { armorClass: 2, agilityPenalty: 1 };
+}
 
-export const BodyArmors: { [key: string]: ArmorDefinition } = {
-  leather: { armorClass: 2, agilityPenalty: 0 },
-  chain: { armorClass: 3, agilityPenalty: 1 },
-  plate: { armorClass: 4, agilityPenalty: 2 }
-};
+export class BodyArmors {
+  static leather: ArmorDefinition = { armorClass: 2, agilityPenalty: 0 };
+  static chain: ArmorDefinition = { armorClass: 3, agilityPenalty: 1 };
+  static plate: ArmorDefinition = { armorClass: 4, agilityPenalty: 2 };
+}
 
-export const Weapons: { [key: string]: WeaponDefinition } = {
-  unarmed: {
+export class Weapons {
+  static unarmed: WeaponDefinition = {
     attackDices: [ DiceType.d6 ],
     parryDice: null,
     reaching: WeaponReaching.none,
@@ -32,8 +34,9 @@ export const Weapons: { [key: string]: WeaponDefinition } = {
     hitPoint: 0,
     twoHanded: false,
     offhand: null
-  },
-  club: {
+  };
+
+  static club: WeaponDefinition = {
     attackDices: [ DiceType.d6, DiceType.d6 ],
     parryDice: DiceType.d6,
     reaching: WeaponReaching.short,
@@ -42,8 +45,9 @@ export const Weapons: { [key: string]: WeaponDefinition } = {
     hitPoint: WoodenHitPoint,
     twoHanded: false,
     offhand: null
-  },
-  spear: {
+  };
+
+  static spear: WeaponDefinition = {
     attackDices: [ DiceType.d6, DiceType.d6 ],
     parryDice: null,
     reaching: WeaponReaching.long,
@@ -52,8 +56,9 @@ export const Weapons: { [key: string]: WeaponDefinition } = {
     hitPoint: WoodenHitPoint,
     twoHanded: false,
     offhand: null
-  },
-  dagger: {
+  };
+
+  static dagger: WeaponDefinition = {
     attackDices: [ DiceType.d6, DiceType.d6, DiceType.d6 ],
     parryDice: null,
     reaching: WeaponReaching.none,
@@ -71,8 +76,9 @@ export const Weapons: { [key: string]: WeaponDefinition } = {
       twoHanded: false,
       offhand: null
     }
-  },
-  shortSword: {
+  };
+
+  static shortSword: WeaponDefinition = {
     attackDices: [ DiceType.d6, DiceType.d6, DiceType.d4 ],
     parryDice: DiceType.d6,
     reaching: WeaponReaching.short,
@@ -90,8 +96,9 @@ export const Weapons: { [key: string]: WeaponDefinition } = {
       twoHanded: false,
       offhand: null
     }
-  },
-  longSword: {
+  };
+
+  static longSword: WeaponDefinition = {
     attackDices: [ DiceType.d8, DiceType.d8 ],
     parryDice: DiceType.d8,
     reaching: WeaponReaching.long,
@@ -100,8 +107,9 @@ export const Weapons: { [key: string]: WeaponDefinition } = {
     hitPoint: SteelHitPoint,
     twoHanded: false,
     offhand: null
-  },
-  handAxe: {
+  };
+
+  static handAxe: WeaponDefinition = {
     attackDices: [ DiceType.d6, DiceType.d6, DiceType.d6 ],
     parryDice: DiceType.d4,
     reaching: WeaponReaching.short,
@@ -119,8 +127,9 @@ export const Weapons: { [key: string]: WeaponDefinition } = {
       twoHanded: false,
       offhand: null
     }
-  },
-  battleAxe: {
+  };
+
+  static battleAxe: WeaponDefinition = {
     attackDices: [ DiceType.d10, DiceType.d6 ],
     parryDice: DiceType.d4,
     reaching: WeaponReaching.short,
@@ -129,8 +138,9 @@ export const Weapons: { [key: string]: WeaponDefinition } = {
     hitPoint: SteelHitPoint,
     twoHanded: false,
     offhand: null
-  },
-  mace: {
+  };
+
+  static mace: WeaponDefinition = {
     attackDices: [ DiceType.d12 ],
     parryDice: DiceType.d4,
     reaching: WeaponReaching.short,
@@ -139,8 +149,9 @@ export const Weapons: { [key: string]: WeaponDefinition } = {
     hitPoint: WoodenHitPoint,
     twoHanded: false,
     offhand: null
-  },
-  flail: {
+  };
+
+  static flail: WeaponDefinition = {
     attackDices: [ DiceType.d8, DiceType.d8 ],
     parryDice: null,
     reaching: WeaponReaching.long,
@@ -149,8 +160,9 @@ export const Weapons: { [key: string]: WeaponDefinition } = {
     hitPoint: SteelHitPoint,
     twoHanded: false,
     offhand: null
-  },
-  staff: {
+  };
+
+  static staff: WeaponDefinition = {
     attackDices: [ DiceType.d6, DiceType.d6 ],
     parryDice: DiceType.d8,
     reaching: WeaponReaching.long,
@@ -159,8 +171,9 @@ export const Weapons: { [key: string]: WeaponDefinition } = {
     hitPoint: WoodenHitPoint,
     twoHanded: true,
     offhand: null
-  },
-  greatSword: {
+  };
+
+  static greatSword: WeaponDefinition = {
     attackDices: [ DiceType.d12, DiceType.d8 ],
     parryDice: DiceType.d8,
     reaching: WeaponReaching.long,
@@ -169,8 +182,9 @@ export const Weapons: { [key: string]: WeaponDefinition } = {
     hitPoint: SteelHitPoint,
     twoHanded: true,
     offhand: null
-  },
-  greatAxe: {
+  };
+
+  static greatAxe: WeaponDefinition = {
     attackDices: [ DiceType.d12, DiceType.d10 ],
     parryDice: DiceType.d4,
     reaching: WeaponReaching.long,
@@ -179,8 +193,9 @@ export const Weapons: { [key: string]: WeaponDefinition } = {
     hitPoint: WoodenHitPoint,
     twoHanded: true,
     offhand: null
-  },
-  pike: {
+  };
+
+  static pike: WeaponDefinition = {
     attackDices: [ DiceType.d8, DiceType.d6 ],
     parryDice: DiceType.d6,
     reaching: WeaponReaching.reaching,
@@ -189,8 +204,9 @@ export const Weapons: { [key: string]: WeaponDefinition } = {
     hitPoint: WoodenHitPoint,
     twoHanded: true,
     offhand: null
-  },
-  polearm: {
+  };
+
+  static polearm: WeaponDefinition = {
     attackDices: [ DiceType.d10, DiceType.d4 ],
     parryDice: DiceType.d6,
     reaching: WeaponReaching.reaching,
@@ -199,5 +215,5 @@ export const Weapons: { [key: string]: WeaponDefinition } = {
     hitPoint: WoodenHitPoint,
     twoHanded: true,
     offhand: null
-  }
-};
+  };
+}

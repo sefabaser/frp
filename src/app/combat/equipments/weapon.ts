@@ -1,4 +1,5 @@
 import { DiceType, Dice, DiceResult } from '../combat-mechanism/dice';
+import { Attack } from '../combat-mechanism/combat-models';
 
 export enum WeaponReaching {
   none = 'none',
@@ -19,15 +20,16 @@ export interface WeaponDefinition {
 }
 
 export class Weapon {
+  get currentHitpoint() { return this.currentHp; }
+  readonly hitPoint: number;
   readonly reaching: WeaponReaching;
   readonly throwable: boolean;
   readonly unparryable: boolean;
-  readonly hitPoint: number;
   readonly twoHanded: boolean;
 
+  private currentHp: number;
   private attackDices: DiceType[];
   private parryDice: DiceType | null;
-  private currentHitPoint: number;
 
   constructor(definition: WeaponDefinition) {
     this.attackDices = definition.attackDices;
@@ -36,20 +38,20 @@ export class Weapon {
     this.throwable = definition.throwable;
     this.unparryable = definition.unparryable;
     this.hitPoint = definition.hitPoint;
-    this.currentHitPoint = definition.hitPoint;
+    this.currentHp = definition.hitPoint;
     this.twoHanded = definition.twoHanded;
   }
 
-  attack(): { success: number, crictical: number} {
+  getAttack(): Attack {
     let result = {
-      success: 0,
+      hit: 0,
       crictical: 0
     };
 
     for (let dice of this.attackDices) {
       let roll = Dice.roll(dice);
       if (roll === DiceResult.success) {
-        result.success++;
+        result.hit++;
       } else if (roll === DiceResult.crictical) {
         result.crictical++;
       }
@@ -58,15 +60,15 @@ export class Weapon {
     return result;
   }
 
-  parry(): number {
-    if (this.currentHitPoint > 0 && this.parryDice && Dice.roll(this.parryDice) !== DiceResult.fail) {
+  getParry(): number {
+    if (this.currentHp > 0 && this.parryDice && Dice.roll(this.parryDice) !== DiceResult.fail) {
       return 1;
     } else {
       return 0;
     }
   }
 
-  getDamage() {
-    this.currentHitPoint--;
+  receiveDamage() {
+    this.currentHp--;
   }
 }

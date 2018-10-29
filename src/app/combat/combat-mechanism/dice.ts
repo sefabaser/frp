@@ -16,8 +16,8 @@ export class Dice {
   constructor(private readonly diceType: DiceType) { }
 
   static roll(diceType: DiceType): DiceResult {
-    let random = Math.ceil(Math.random() * diceType);
-    if (random >= 3) {
+    let random = Math.floor(Math.random() * diceType) + 1;
+    if (random >= 10) {
       return DiceResult.crictical;
     } else if (random >= 4) {
       return DiceResult.success;

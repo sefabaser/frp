@@ -7,21 +7,23 @@ export interface ShieldDefinition {
 }
 
 export class Shield {
-  readonly dice: DiceType;
+  get currentHitpoint() { return this.currentHp; }
   readonly hitPoint: number;
+  private currentHp: number;
+
+  readonly dice: DiceType;
   readonly agilityPenalty: number;
 
-  private currentHitPoint: number;
 
   constructor(definition: ShieldDefinition) {
     this.dice = definition.dice;
     this.hitPoint = definition.hitPoint;
-    this.currentHitPoint = definition.hitPoint;
+    this.currentHp = definition.hitPoint;
     this.agilityPenalty = definition.agilityPenalty;
   }
 
   block(): number {
-    if (this.currentHitPoint > 0 && Dice.roll(this.dice) !== DiceResult.fail) {
+    if (this.currentHp > 0 && Dice.roll(this.dice) !== DiceResult.fail) {
       return 1;
     } else {
       return 0;
@@ -29,6 +31,6 @@ export class Shield {
   }
 
   getDamage() {
-    this.currentHitPoint--;
+    this.currentHp--;
   }
 }
