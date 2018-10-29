@@ -2,6 +2,7 @@
 export interface Attack {
   hit: number;
   crictical: number;
+  unparryable: boolean;
 }
 
 export interface UnitAttackReport {

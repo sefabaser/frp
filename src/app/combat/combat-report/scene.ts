@@ -14,7 +14,7 @@ export class CombatScene {
     this.unit2 = new Unit(unit2);
   }
 
-  start() {
+  handleTheBattle() {
     try {
       this.approachRound();
       let counter = 0;
@@ -28,6 +28,18 @@ export class CombatScene {
       }
     } catch (winner) {
       this.winner = winner;
+    }
+  }
+
+  printLog() {
+    for (let entry of this.log) {
+      if (entry[0] === 'E') {
+        console.error(entry.substr(1));
+      } else if (entry[0] === 'W') {
+        console.warn(entry.substr(1));
+      } else {
+        console.log(entry);
+      }
     }
   }
 

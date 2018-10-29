@@ -33,13 +33,13 @@ export class CombatMechanism {
       defence.block--;
     }
 
-    while (defence.parry) {
+    while (defence.parry && !attack.unparryable) {
       if (attack.crictical) {
-        stoppedByBlock = true;
+        stoppedByParry = true;
         defender.mainHand.receiveDamage();
       } else if (attack.hit) {
         attack.hit--;
-        stoppedByBlock = true;
+        stoppedByParry = true;
       }
 
       defence.parry--;
@@ -56,14 +56,39 @@ export class CombatMechanism {
       defence.protection--;
     }
 
+    let notes = [];
+    if (stoppedByBlock) {
+      notes.push('blocked by the shield');
+    }
+    if (stoppedByParry) {
+      notes.push('parried by the weapon');
+    }
+    if (stoppedByArmor) {
+      notes.push('hit to the armor');
+    }
+
     if (attack.crictical) {
-      log.push(`E${attacker.name} has achieved crictical hit to ${defender.name}!`);
+      if (stoppedByBlock || stoppedByParry || stoppedByArmor) {
+        let message = `The attack ${notes.join(', ')}, but it was too strong and accurate to be stopped!`;
+        log.push(`E${message} ${attacker.name} has achieved crictical hit to ${defender.name}!`);
+      } else {
+        log.push(`EIt was a clean hit! ${attacker.name} has achieved crictical hit to ${defender.name}!`);
+      }
       defender.receiveDamage(2);
     } else if (attack.hit) {
-      log.push(`W${attacker.name} hit ${defender.name}!`);
+      if (stoppedByBlock || stoppedByParry || stoppedByArmor) {
+        let message = `The attack ${notes.join(', ')}, but it was too strong and accurate to be stopped!`;
+        log.push(`W${message} ${attacker.name} hit ${defender.name}!`);
+      } else {
+        log.push(`WIt was a clean hit! ${attacker.name} hit ${defender.name}!`);
+      }
       defender.receiveDamage(1);
     } else {
-      log.push(`${attacker.name} missed ${defender.name}!`);
+      if (stoppedByBlock || stoppedByParry || stoppedByArmor) {
+        log.push(`The attack ${notes.join(', ')}. ${attacker.name} missed ${defender.name}!`);
+      } else {
+        log.push(`${attacker.name} missed ${defender.name}!`);
+      }
     }
 
     if (defender.currentHitpoint <= 0) {

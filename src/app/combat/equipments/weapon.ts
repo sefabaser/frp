@@ -45,7 +45,8 @@ export class Weapon {
   getAttack(): Attack {
     let result = {
       hit: 0,
-      crictical: 0
+      crictical: 0,
+      unparryable: this.unparryable
     };
 
     for (let dice of this.attackDices) {

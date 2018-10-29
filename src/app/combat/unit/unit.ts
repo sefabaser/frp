@@ -44,7 +44,7 @@ export class Unit {
   getAttack(): UnitAttackReport {
     return {
       main: this.mainHand.getAttack(),
-      secondary: this.offHand instanceof Weapon ? this.offHand.getAttack() : { hit: 0, crictical: 0 }
+      secondary: this.offHand instanceof Weapon ? this.offHand.getAttack() : { hit: 0, crictical: 0, unparryable: false }
     };
   }
 
