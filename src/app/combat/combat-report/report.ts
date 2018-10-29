@@ -18,7 +18,6 @@ export class CombatReport {
 
     let combatScene = new CombatScene(unit1, unit2);
     combatScene.start();
-    console.warn(combatScene.winner);
 
     for (let log of combatScene.log) {
       if (log[0] === 'E') {
@@ -29,5 +28,7 @@ export class CombatReport {
         console.log(log);
       }
     }
+
+    console.warn(combatScene.winner);
   }
 }
