@@ -1,7 +1,7 @@
-import { DiceType } from '../combat-mechanism/dice';
 import { ArmorDefinition } from './armor';
 import { ShieldDefinition } from './shield';
 import { WeaponDefinition, WeaponReaching } from './weapon';
+import { DiceType } from '../utils/dice';
 
 const WoodenHitPoint = 1;
 const SteelHitPoint = 4;

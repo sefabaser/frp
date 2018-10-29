@@ -1,6 +1,6 @@
-import { CombatScene } from './combat-scene';
 import { Units } from '../unit/definitions';
 import { UnitDefinition } from '../unit/unit';
+import { CombatScene } from './scene';
 
 export class CombatReport {
   constructor() {
@@ -17,5 +17,17 @@ export class CombatReport {
     }
 
     let combatScene = new CombatScene(unit1, unit2);
+    combatScene.start();
+    console.warn(combatScene.winner);
+
+    for (let log of combatScene.log) {
+      if (log[0] === 'E') {
+        console.error(log.substr(1));
+      } else if (log[0] === 'W') {
+        console.warn(log.substr(1));
+      } else {
+        console.log(log);
+      }
+    }
   }
 }

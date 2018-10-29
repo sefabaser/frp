@@ -1,5 +1,5 @@
-import { DiceType, Dice, DiceResult } from '../combat-mechanism/dice';
-import { Attack } from '../combat-mechanism/combat.model';
+import { Dice, DiceResult, DiceType } from '../utils/dice';
+import { Attack } from '../utils/combat.model';
 
 export enum WeaponReaching {
   none = 0,

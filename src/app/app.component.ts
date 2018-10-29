@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { CombatReport } from './combat/combat-report/combat-report';
+import { CombatReport } from './combat/combat-report/report';
 
 @Component({
   selector: 'app-root',

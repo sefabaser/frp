@@ -2,7 +2,7 @@ import { Armor, ArmorDefinition } from '../equipments/armor';
 import { Weapon, WeaponDefinition } from '../equipments/weapon';
 import { Shield, ShieldDefinition } from '../equipments/shield';
 import { Weapons } from '../equipments/definitions';
-import { UnitAttackReport, UnitDefenceReport } from '../combat-mechanism/combat.model';
+import { UnitAttackReport, UnitDefenceReport } from '../utils/combat.model';
 
 export interface UnitDefinition {
   name: string;

@@ -1,4 +1,4 @@
-import { Dice, DiceType, DiceResult } from '../combat-mechanism/dice';
+import { Dice, DiceType, DiceResult } from '../utils/dice';
 
 export interface ArmorDefinition {
   armorClass: number;

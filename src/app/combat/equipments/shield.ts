@@ -1,4 +1,4 @@
-import { Dice, DiceType, DiceResult } from '../combat-mechanism/dice';
+import { DiceType, Dice, DiceResult } from '../utils/dice';
 
 export interface ShieldDefinition {
   dice: DiceType;
