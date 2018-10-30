@@ -2,5 +2,9 @@
   <app-unit-creator #unitCreator1></app-unit-creator>
   <app-unit-creator #unitCreator2></app-unit-creator>
 </div>
-<button (click)='singleCombat(unitCreator1, unitCreator2)'>Single Combat</button>
-<app-statistics-log [log]='statistics?.log'></app-statistics-log>
+<button (click)='combat(unitCreator1, unitCreator2, "single")'>Single Combat</button>
+<button (click)='combat(unitCreator1, unitCreator2, "bulk")'>Bulk Combat</button>
+<div class='statistics-area'>
+  <app-statistics-log *ngIf='showLog' [log]='statistics?.log'></app-statistics-log>
+  <app-statistics *ngIf='showReport' [statistics]='statistics'></app-statistics>
+</div>

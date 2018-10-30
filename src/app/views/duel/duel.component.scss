@@ -3,3 +3,13 @@
   justify-content: space-between;
   width: 550px;
 }
+
+.statistics-area {
+  display: flex;
+  justify-content: space-between;
+  width: 1000px;
+
+  app-statistics-log {
+    width: 600px;
+  }
+}

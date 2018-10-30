@@ -9,9 +9,18 @@ import { CombatReport, CombatStatistics } from 'src/app/combat/combat-report/rep
 })
 export class DuelComponent {
   statistics: CombatStatistics;
+  showLog = false;
+  showReport = false;
 
-  singleCombat(unitCreator1: UnitCreatorComponent, unitCreator2: UnitCreatorComponent) {
+  combat(unitCreator1: UnitCreatorComponent, unitCreator2: UnitCreatorComponent, bulk: 'single' | 'bulk') {
+    this.showLog = false;
+    this.showReport = false;
     let combatReport = new CombatReport();
-    this.statistics = combatReport.processDuel(unitCreator1.getUnitDefinition(), unitCreator2.getUnitDefinition(), 'single');
+    let unit1 = unitCreator1.getUnitDefinition();
+    let unit2 = unitCreator2.getUnitDefinition();
+    unit1.name = unit1.name || 'Angry Man';
+    unit2.name = unit2.name || 'Peasant';
+    this.statistics = combatReport.processDuel(unit1, unit2, bulk);
+    bulk === 'single' ? this.showLog = true : this.showReport = true;
   }
 }

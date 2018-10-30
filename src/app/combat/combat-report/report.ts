@@ -66,8 +66,8 @@ export class CombatReport {
       for (let i = 0; i <= BulkLimit; i++) {
         statistics.log = [];
         this.duel(unit1, unit2, statistics);
-        statistics.normalize(BulkLimit);
       }
+      statistics.normalize(BulkLimit);
     } else {
       this.duel(unit1, unit2, statistics);
       statistics.normalize(1);
