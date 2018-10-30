@@ -27,7 +27,7 @@ export class Armor {
     let d4 = this.armorClass % 3 === 1;
 
     let successCount = 0;
-    for (let i = 0; i <= d8Count; i++) {
+    for (let i = 1; i <= d8Count; i++) {
       if (Dice.roll(DiceType.d8) !== DiceResult.fail) {
         successCount++;
       }

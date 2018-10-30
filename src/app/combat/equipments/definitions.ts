@@ -5,12 +5,21 @@ import { DiceType } from '../utils/dice';
 
 const WoodenHitPoint = 1;
 const SteelHitPoint = 4;
+const LargeShieldHitPointDifference = 1;
 
 export class Shields {
   static woodenSmallShield: ShieldDefinition = { dice: DiceType.d6, hitPoint: WoodenHitPoint, agilityPenalty: 0 };
   static steelSmallShield: ShieldDefinition = { dice: DiceType.d6, hitPoint: SteelHitPoint, agilityPenalty: 1 };
-  static woodenLargeShield: ShieldDefinition = { dice: DiceType.d8, hitPoint: WoodenHitPoint + 1, agilityPenalty: 1 };
-  static steelLargeShield: ShieldDefinition = { dice: DiceType.d8, hitPoint: SteelHitPoint + 1, agilityPenalty: 2 };
+  static woodenLargeShield: ShieldDefinition = {
+    dice: DiceType.d8,
+    hitPoint: WoodenHitPoint + LargeShieldHitPointDifference,
+    agilityPenalty: 1
+  };
+  static steelLargeShield: ShieldDefinition = {
+    dice: DiceType.d8,
+    hitPoint: SteelHitPoint + LargeShieldHitPointDifference,
+    agilityPenalty: 2
+  };
 }
 
 export class HeadArmors {

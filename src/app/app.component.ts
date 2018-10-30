@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { CombatReport } from './combat/combat-report/report';
+import { Units } from './combat/unit/definitions';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +11,6 @@ import { CombatReport } from './combat/combat-report/report';
 export class AppComponent {
   constructor() {
     let combatReport = new CombatReport();
+    combatReport.processDuel(Units.twoHandedSwordsman, Units.swordsman, 'bulk');
   }
 }
