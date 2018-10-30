@@ -8,7 +8,7 @@
   <div class='text'>head</div>
   <div class='field'>
     <select [(ngModel)]="selectedHelm">
-      <option *ngFor='let item of headArmors | keyvalue' [value]='item.key'>{{item.key}}</option>
+      <option *ngFor='let item of headArmors | keyvalue' [value]='item.key'>{{item.value.name}}</option>
     </select>
   </div>
 </div>
@@ -16,25 +16,25 @@
   <div class='text'>body</div>
   <div class='field'>
     <select [(ngModel)]="selectedArmor">
-      <option *ngFor='let item of bodyArmors | keyvalue' [value]='item.key'>{{item.key}}</option>
+      <option *ngFor='let item of bodyArmors | keyvalue' [value]='item.key'>{{item.value.name}}</option>
     </select>
   </div>
 </div>
 <div class='field-row'>
   <div class='text'>main hand</div>
   <div class='field'>
-    <select [(ngModel)]="selectedWeapon">
-      <option *ngFor='let item of weapons | keyvalue' [value]='item.key'>{{item.key}}</option>
+    <select [(ngModel)]="selectedWeapon" (ngModelChange)='checkItemCombination()'>
+      <option *ngFor='let item of weapons | keyvalue' [value]='item.key'>{{item.value.name}}</option>
     </select>
   </div>
 </div>
 <div class='field-row'>
   <div class='text'>off hand</div>
   <div class='field'>
-    <select [(ngModel)]="selectedOffhandItem">
+    <select [(ngModel)]="selectedOffhandItem" (ngModelChange)='checkItemCombination()'>
       <option value='none'>none</option>
-      <option *ngFor='let item of shields | keyvalue' [value]='item.key'>{{item.key}}</option>
-      <option *ngFor='let item of offhandWeapons | keyvalue' [value]='item.key'>{{item.key}}</option>
+      <option *ngFor='let item of shields | keyvalue' [value]='item.key'>{{item.value.name}}</option>
+      <option *ngFor='let item of offhandWeapons | keyvalue' [value]='item.key'>{{item.value.name}}</option>
     </select>
   </div>
 </div>

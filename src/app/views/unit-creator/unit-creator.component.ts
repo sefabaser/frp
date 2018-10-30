@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 
 import { HeadArmors, BodyArmors, Shields, Weapons } from 'src/app/combat/equipments/definitions';
-import { ArmorDefinition } from 'src/app/combat/equipments/armor';
-import { WeaponDefinition } from 'src/app/combat/equipments/weapon';
-import { ShieldDefinition } from 'src/app/combat/equipments/shield';
 import { UnitDefinition } from 'src/app/combat/unit/unit';
+import { IsValidDualWeapon } from 'src/app/combat/equipments/rules';
 
 @Component({
   selector: 'app-unit-creator',
@@ -44,5 +42,21 @@ export class UnitCreatorComponent {
       offHandWeapon: this.offhandWeapons[this.selectedOffhandItem],
       shield: Shields[this.selectedOffhandItem]
     };
+  }
+
+  checkItemCombination() {
+    let weapon = Weapons[this.selectedWeapon];
+    let offhand = this.offhandWeapons[this.selectedOffhandItem];
+    if (weapon.twoHanded) {
+      setTimeout(() => {
+        this.selectedOffhandItem = 'none';
+      });
+    }
+
+    if (offhand && !IsValidDualWeapon(weapon.name, offhand.name)) {
+      setTimeout(() => {
+        this.selectedOffhandItem = 'none';
+      });
+    }
   }
 }

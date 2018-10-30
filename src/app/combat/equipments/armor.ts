@@ -1,6 +1,7 @@
 import { Dice, DiceType, DiceResult } from '../utils/dice';
 
 export interface ArmorDefinition {
+  name: string;
   armorClass: number;
   agilityPenalty: number;
 }
@@ -12,6 +13,7 @@ export class Armor {
   constructor(definition: ArmorDefinition) {
     if (!definition) {
       definition = {
+        name: 'none',
         armorClass: 0,
         agilityPenalty: 0
       };

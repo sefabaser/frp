@@ -1,6 +1,7 @@
 import { DiceType, Dice, DiceResult } from '../utils/dice';
 
 export interface ShieldDefinition {
+  name: string;
   dice: DiceType;
   hitPoint: number;
   agilityPenalty: number;

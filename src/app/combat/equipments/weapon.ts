@@ -9,6 +9,7 @@ export enum WeaponReaching {
 }
 
 export interface WeaponDefinition {
+  name: string;
   attackDices: DiceType[];
   parryDice: DiceType | null;
   reaching: WeaponReaching;
