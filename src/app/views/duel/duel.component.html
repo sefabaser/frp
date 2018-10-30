@@ -1,0 +1,6 @@
+<div class='unit-creator-area'>
+  <app-unit-creator #unitCreator1></app-unit-creator>
+  <app-unit-creator #unitCreator2></app-unit-creator>
+</div>
+<button (click)='singleCombat(unitCreator1, unitCreator2)'>Single Combat</button>
+<app-statistics-log [log]='statistics?.log'></app-statistics-log>

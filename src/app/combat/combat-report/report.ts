@@ -29,39 +29,36 @@ export class CombatStatistics {
 
   printLog() {
     for (let entry of this.log) {
-      if (entry[0] === 'E') {
-        console.error(entry.substr(1));
-      } else if (entry[0] === 'W') {
-        console.warn(entry.substr(1));
+      if (entry[0] === 'E:') {
+        console.error(entry.substr(2));
+      } else if (entry[0] === 'W:') {
+        console.warn(entry.substr(2));
       } else {
         console.log(entry);
       }
     }
   }
 
-  print() {
-    this.normalizeStatistics(this.unit1);
-    this.normalizeStatistics(this.unit2);
-    this.combatDuration = this.combatDuration / BulkLimit;
-    console.warn('Awarage combat duration: ', this.combatDuration);
-    console.warn(this.unit1);
-    console.warn(this.unit2);
+  normalize(count: number) {
+    this.combatDuration = this.combatDuration / count;
+    this.normalizeStatistics(this.unit1, count);
+    this.normalizeStatistics(this.unit2, count);
   }
 
-  private normalizeStatistics(unitStatistics: UnitStatistics) {
-    unitStatistics.win = unitStatistics.win * 100 / BulkLimit;
-    unitStatistics.blockCount = unitStatistics.blockCount / BulkLimit;
-    unitStatistics.parryCount = unitStatistics.parryCount / BulkLimit;
-    unitStatistics.protectionCount = unitStatistics.protectionCount / BulkLimit;
-    unitStatistics.shieldBroken = unitStatistics.shieldBroken * 100 / BulkLimit;
-    unitStatistics.weaponBroken = unitStatistics.weaponBroken * 100 / BulkLimit;
-    unitStatistics.hitCount = unitStatistics.hitCount / BulkLimit;
-    unitStatistics.cricticalHitCount = unitStatistics.cricticalHitCount / BulkLimit;
+  private normalizeStatistics(unitStatistics: UnitStatistics, count: number) {
+    unitStatistics.win = unitStatistics.win * 100 / count;
+    unitStatistics.blockCount = unitStatistics.blockCount / count;
+    unitStatistics.parryCount = unitStatistics.parryCount / count;
+    unitStatistics.protectionCount = unitStatistics.protectionCount / count;
+    unitStatistics.shieldBroken = unitStatistics.shieldBroken * 100 / count;
+    unitStatistics.weaponBroken = unitStatistics.weaponBroken * 100 / count;
+    unitStatistics.hitCount = unitStatistics.hitCount / count;
+    unitStatistics.cricticalHitCount = unitStatistics.cricticalHitCount / count;
   }
 }
 
 export class CombatReport {
-  processDuel(unit1: UnitDefinition, unit2: UnitDefinition, bulkDuel: 'bulk' | 'single') {
+  processDuel(unit1: UnitDefinition, unit2: UnitDefinition, bulkDuel: 'bulk' | 'single'): CombatStatistics {
     this.checkUnitNames(unit1, unit2);
     let statistics = new CombatStatistics(unit1.name, unit2.name);
 
@@ -69,12 +66,14 @@ export class CombatReport {
       for (let i = 0; i <= BulkLimit; i++) {
         statistics.log = [];
         this.duel(unit1, unit2, statistics);
+        statistics.normalize(BulkLimit);
       }
-      statistics.print();
     } else {
       this.duel(unit1, unit2, statistics);
-      statistics.printLog();
+      statistics.normalize(1);
     }
+
+    return statistics;
   }
 
   private checkUnitNames(unit1: UnitDefinition, unit2: UnitDefinition) {

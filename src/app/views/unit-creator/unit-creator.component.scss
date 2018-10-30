@@ -1,0 +1,15 @@
+.field-row {
+  display: flex;
+  justify-content: space-between;
+  width: 250px;
+
+  .field {
+    input {
+      width: 150px;
+    }
+
+    select {
+      width: 150px;
+    }
+  }
+}

@@ -40,7 +40,7 @@ export class CombatMechanism {
 
         defender.offHand.receiveDamage();
         if (defender.offHand.currentHitpoint <= 0) {
-          statistics.log.push(`E${defender.name}'s shield has been broken!`);
+          statistics.log.push(`E:${defender.name}'s shield has been broken!`);
           defenderStatistics.shieldBroken++;
         }
       } else if (attack.hit) {
@@ -60,7 +60,7 @@ export class CombatMechanism {
 
         defender.mainHand.receiveDamage();
         if (defender.mainHand.currentHitpoint <= 0) {
-          statistics.log.push(`E${defender.name}'s weapon has been broken!`);
+          statistics.log.push(`E:${defender.name}'s weapon has been broken!`);
           defenderStatistics.weaponBroken++;
         }
       } else if (attack.hit) {
@@ -98,18 +98,18 @@ export class CombatMechanism {
     if (attack.crictical) {
       if (stoppedByBlock || stoppedByParry || stoppedByArmor) {
         let message = `The attack ${notes.join(', ')}, but it was too strong and accurate to be stopped!`;
-        statistics.log.push(`E${message} ${attacker.name} has achieved crictical hit to ${defender.name}!`);
+        statistics.log.push(`E:${message} ${attacker.name} has achieved crictical hit to ${defender.name}!`);
       } else {
-        statistics.log.push(`EIt was a clean hit! ${attacker.name} has achieved crictical hit to ${defender.name}!`);
+        statistics.log.push(`E:It was a clean hit! ${attacker.name} has achieved crictical hit to ${defender.name}!`);
       }
       attackerStatistics.cricticalHitCount++;
       defender.receiveDamage(2);
     } else if (attack.hit) {
       if (stoppedByBlock || stoppedByParry || stoppedByArmor) {
         let message = `The attack ${notes.join(', ')}, but it was too strong and accurate to be stopped!`;
-        statistics.log.push(`W${message} ${attacker.name} hit ${defender.name}!`);
+        statistics.log.push(`W:${message} ${attacker.name} hit ${defender.name}!`);
       } else {
-        statistics.log.push(`WIt was a clean hit! ${attacker.name} hit ${defender.name}!`);
+        statistics.log.push(`W:It was a clean hit! ${attacker.name} hit ${defender.name}!`);
       }
       attackerStatistics.hitCount++;
       defender.receiveDamage(1);
@@ -122,7 +122,7 @@ export class CombatMechanism {
     }
 
     if (defender.currentHitpoint <= 0) {
-      statistics.log.push(`E${defender.name} fell to the ground. ${attacker.name} is the winner.`);
+      statistics.log.push(`E:${defender.name} fell to the ground. ${attacker.name} is the winner.`);
       throw attacker;
     }
   }

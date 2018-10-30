@@ -7,36 +7,36 @@ const WoodenHitPoint = 1;
 const SteelHitPoint = 4;
 const LargeShieldHitPointDifference = 1;
 
-export class Shields {
-  static woodenSmallShield: ShieldDefinition = { dice: DiceType.d6, hitPoint: WoodenHitPoint, agilityPenalty: 0 };
-  static steelSmallShield: ShieldDefinition = { dice: DiceType.d6, hitPoint: SteelHitPoint, agilityPenalty: 1 };
-  static woodenLargeShield: ShieldDefinition = {
+export const Shields: { [key: string]: ShieldDefinition } = {
+  woodenSmallShield: { dice: DiceType.d6, hitPoint: WoodenHitPoint, agilityPenalty: 0 },
+  steelSmallShield: { dice: DiceType.d6, hitPoint: SteelHitPoint, agilityPenalty: 1 },
+  woodenLargeShield: {
     dice: DiceType.d8,
     hitPoint: WoodenHitPoint + LargeShieldHitPointDifference,
     agilityPenalty: 1
-  };
-  static steelLargeShield: ShieldDefinition = {
+  },
+  steelLargeShield: {
     dice: DiceType.d8,
     hitPoint: SteelHitPoint + LargeShieldHitPointDifference,
     agilityPenalty: 2
-  };
-}
+  }
+};
 
-export class HeadArmors {
-  static none: ArmorDefinition = { armorClass: 0, agilityPenalty: 0 };
-  static cap: ArmorDefinition = { armorClass: 1, agilityPenalty: 0 };
-  static helm: ArmorDefinition = { armorClass: 2, agilityPenalty: 1 };
-}
+export const HeadArmors: { [key: string]: ArmorDefinition } = {
+  none: { armorClass: 0, agilityPenalty: 0 },
+  cap: { armorClass: 1, agilityPenalty: 0 },
+  helm: { armorClass: 2, agilityPenalty: 1 }
+};
 
-export class BodyArmors {
-  static none: ArmorDefinition = { armorClass: 0, agilityPenalty: 0 };
-  static leather: ArmorDefinition = { armorClass: 2, agilityPenalty: 0 };
-  static chain: ArmorDefinition = { armorClass: 3, agilityPenalty: 1 };
-  static plate: ArmorDefinition = { armorClass: 4, agilityPenalty: 2 };
-}
+export const BodyArmors: { [key: string]: ArmorDefinition } = {
+  none: { armorClass: 0, agilityPenalty: 0 },
+  leather: { armorClass: 2, agilityPenalty: 0 },
+  chain: { armorClass: 3, agilityPenalty: 1 },
+  plate: { armorClass: 4, agilityPenalty: 2 }
+};
 
-export class Weapons {
-  static unarmed: WeaponDefinition = {
+export const Weapons: { [key: string]: WeaponDefinition } = {
+  unarmed: {
     attackDices: [ DiceType.d6 ],
     parryDice: null,
     reaching: WeaponReaching.none,
@@ -45,9 +45,8 @@ export class Weapons {
     hitPoint: 0,
     twoHanded: false,
     offhand: null
-  };
-
-  static club: WeaponDefinition = {
+  },
+  club: {
     attackDices: [ DiceType.d6, DiceType.d6 ],
     parryDice: DiceType.d6,
     reaching: WeaponReaching.short,
@@ -56,9 +55,8 @@ export class Weapons {
     hitPoint: WoodenHitPoint,
     twoHanded: false,
     offhand: null
-  };
-
-  static spear: WeaponDefinition = {
+  },
+  spear: {
     attackDices: [ DiceType.d6, DiceType.d6 ],
     parryDice: null,
     reaching: WeaponReaching.long,
@@ -67,9 +65,8 @@ export class Weapons {
     hitPoint: WoodenHitPoint,
     twoHanded: false,
     offhand: null
-  };
-
-  static dagger: WeaponDefinition = {
+  },
+  dagger: {
     attackDices: [ DiceType.d6, DiceType.d6, DiceType.d6 ],
     parryDice: null,
     reaching: WeaponReaching.none,
@@ -87,9 +84,8 @@ export class Weapons {
       twoHanded: false,
       offhand: null
     }
-  };
-
-  static shortSword: WeaponDefinition = {
+  },
+  shortSword: {
     attackDices: [ DiceType.d6, DiceType.d6, DiceType.d4 ],
     parryDice: DiceType.d6,
     reaching: WeaponReaching.short,
@@ -107,9 +103,8 @@ export class Weapons {
       twoHanded: false,
       offhand: null
     }
-  };
-
-  static longSword: WeaponDefinition = {
+  },
+  longSword: {
     attackDices: [ DiceType.d8, DiceType.d8 ],
     parryDice: DiceType.d8,
     reaching: WeaponReaching.long,
@@ -118,9 +113,8 @@ export class Weapons {
     hitPoint: SteelHitPoint,
     twoHanded: false,
     offhand: null
-  };
-
-  static handAxe: WeaponDefinition = {
+  },
+  handAxe: {
     attackDices: [ DiceType.d6, DiceType.d6, DiceType.d6 ],
     parryDice: DiceType.d4,
     reaching: WeaponReaching.short,
@@ -138,9 +132,8 @@ export class Weapons {
       twoHanded: false,
       offhand: null
     }
-  };
-
-  static battleAxe: WeaponDefinition = {
+  },
+  battleAxe: {
     attackDices: [ DiceType.d10, DiceType.d6 ],
     parryDice: DiceType.d4,
     reaching: WeaponReaching.short,
@@ -149,9 +142,8 @@ export class Weapons {
     hitPoint: SteelHitPoint,
     twoHanded: false,
     offhand: null
-  };
-
-  static mace: WeaponDefinition = {
+  },
+  mace: {
     attackDices: [ DiceType.d12 ],
     parryDice: DiceType.d4,
     reaching: WeaponReaching.short,
@@ -160,9 +152,8 @@ export class Weapons {
     hitPoint: WoodenHitPoint,
     twoHanded: false,
     offhand: null
-  };
-
-  static flail: WeaponDefinition = {
+  },
+  flail: {
     attackDices: [ DiceType.d8, DiceType.d8 ],
     parryDice: null,
     reaching: WeaponReaching.long,
@@ -171,9 +162,8 @@ export class Weapons {
     hitPoint: SteelHitPoint,
     twoHanded: false,
     offhand: null
-  };
-
-  static staff: WeaponDefinition = {
+  },
+  staff: {
     attackDices: [ DiceType.d6, DiceType.d6 ],
     parryDice: DiceType.d8,
     reaching: WeaponReaching.long,
@@ -182,9 +172,8 @@ export class Weapons {
     hitPoint: WoodenHitPoint,
     twoHanded: true,
     offhand: null
-  };
-
-  static greatSword: WeaponDefinition = {
+  },
+  greatSword: {
     attackDices: [ DiceType.d12, DiceType.d8 ],
     parryDice: DiceType.d8,
     reaching: WeaponReaching.long,
@@ -193,9 +182,8 @@ export class Weapons {
     hitPoint: SteelHitPoint,
     twoHanded: true,
     offhand: null
-  };
-
-  static greatAxe: WeaponDefinition = {
+  },
+  greatAxe: {
     attackDices: [ DiceType.d12, DiceType.d10 ],
     parryDice: DiceType.d4,
     reaching: WeaponReaching.long,
@@ -204,9 +192,8 @@ export class Weapons {
     hitPoint: WoodenHitPoint,
     twoHanded: true,
     offhand: null
-  };
-
-  static pike: WeaponDefinition = {
+  },
+  pike: {
     attackDices: [ DiceType.d8, DiceType.d6 ],
     parryDice: DiceType.d6,
     reaching: WeaponReaching.reaching,
@@ -215,9 +202,8 @@ export class Weapons {
     hitPoint: WoodenHitPoint,
     twoHanded: true,
     offhand: null
-  };
-
-  static polearm: WeaponDefinition = {
+  },
+  polearm: {
     attackDices: [ DiceType.d10, DiceType.d4 ],
     parryDice: DiceType.d6,
     reaching: WeaponReaching.reaching,
@@ -226,5 +212,5 @@ export class Weapons {
     hitPoint: WoodenHitPoint,
     twoHanded: true,
     offhand: null
-  };
-}
+  }
+};

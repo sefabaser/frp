@@ -1,0 +1,5 @@
+<div *ngFor='let entry of log'>
+  <span *ngIf='entry.indexOf("W:") === 0' class='warning'>{{entry.substr(2)}}</span>
+  <span *ngIf='entry.indexOf("E:") === 0' class='error'>{{entry.substr(2)}}</span>
+  <span *ngIf='entry.indexOf("W:") !== 0 && entry.indexOf("E:") !== 0'>{{entry}}</span>
+</div>
