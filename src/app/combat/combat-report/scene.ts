@@ -46,7 +46,6 @@ export class CombatScene {
       this.approach(this.unit2, this.unit1);
       this.attackOfOpportunity(this.unit1, this.unit2, this.unit2.mainHand.reaching + 1);
       this.attack(this.unit2, this.unit1, WeaponReaching.none);
-      this.counterAttack(this.unit1, this.unit2, WeaponReaching.none);
       this.statistics.combatDuration++;
     } else if (this.unit2.mainHand.isReachingMoreThan(this.unit1.mainHand.reaching)) {
       this.approach(this.unit1, this.unit2);
@@ -61,9 +60,7 @@ export class CombatScene {
   private attackRound() {
     this.statistics.combatDuration++;
     this.attack(this.unit1, this.unit2, WeaponReaching.none);
-    this.counterAttack(this.unit2, this.unit1, WeaponReaching.none);
     this.attack(this.unit2, this.unit1, WeaponReaching.none);
-    this.counterAttack(this.unit1, this.unit2, WeaponReaching.none);
   }
 
   private approach(approachingUnit: Unit, targetUnit: Unit) {
@@ -72,11 +69,6 @@ export class CombatScene {
 
   private attack(attacker: Unit, defender: Unit, distance: WeaponReaching) {
     this.statistics.log.push(`${attacker.name} is attacking to ${defender.name}.`);
-    CombatMechanism.attack(attacker, defender, distance, this.statistics);
-  }
-
-  private counterAttack(attacker: Unit, defender: Unit, distance: WeaponReaching) {
-    this.statistics.log.push(`${attacker.name} is counter attacking to ${defender.name}.`);
     CombatMechanism.attack(attacker, defender, distance, this.statistics);
   }
 

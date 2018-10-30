@@ -18,8 +18,8 @@ export class DuelComponent {
     let combatReport = new CombatReport();
     let unit1 = unitCreator1.getUnitDefinition();
     let unit2 = unitCreator2.getUnitDefinition();
-    unit1.name = unit1.name || 'Angry Man';
-    unit2.name = unit2.name || 'Peasant';
+    unit1.name = unit1.name || 'Attacker';
+    unit2.name = unit2.name || 'Defender';
     this.statistics = combatReport.processDuel(unit1, unit2, bulk);
     bulk === 'single' ? this.showLog = true : this.showReport = true;
   }

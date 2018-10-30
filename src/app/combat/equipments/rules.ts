@@ -2,6 +2,7 @@
 export const WoodenHitPoint = 1;
 export const SteelHitPoint = 4;
 export const LargeShieldHitPointDifference = 1;
+export const WeaponHitPointDifference = 1;
 
 export function IsValidDualWeapon(main: string, offhand: string): boolean {
   let result = false;

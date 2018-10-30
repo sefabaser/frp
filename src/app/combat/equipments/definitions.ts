@@ -1,7 +1,7 @@
 import { ArmorDefinition } from './armor';
 import { ShieldDefinition } from './shield';
 import { WeaponDefinition, WeaponReaching } from './weapon';
-import { WoodenHitPoint, SteelHitPoint, LargeShieldHitPointDifference } from './rules';
+import { WoodenHitPoint, SteelHitPoint, LargeShieldHitPointDifference, WeaponHitPointDifference } from './rules';
 import { DiceType } from '../utils/dice';
 
 export const Shields: { [key: string]: ShieldDefinition } = {
@@ -53,7 +53,7 @@ export const Weapons: { [key: string]: WeaponDefinition } = {
     reaching: WeaponReaching.short,
     throwable: false,
     unparryable: false,
-    hitPoint: WoodenHitPoint,
+    hitPoint: WoodenHitPoint + WeaponHitPointDifference,
     twoHanded: false,
     offhand: null
   },
@@ -64,7 +64,7 @@ export const Weapons: { [key: string]: WeaponDefinition } = {
     reaching: WeaponReaching.long,
     throwable: true,
     unparryable: true,
-    hitPoint: WoodenHitPoint,
+    hitPoint: WoodenHitPoint + WeaponHitPointDifference,
     twoHanded: false,
     offhand: null
   },
@@ -75,7 +75,7 @@ export const Weapons: { [key: string]: WeaponDefinition } = {
     reaching: WeaponReaching.none,
     throwable: true,
     unparryable: true,
-    hitPoint: SteelHitPoint,
+    hitPoint: SteelHitPoint + WeaponHitPointDifference,
     twoHanded: false,
     offhand: {
       name: 'Dagger',
@@ -84,7 +84,7 @@ export const Weapons: { [key: string]: WeaponDefinition } = {
       reaching: WeaponReaching.none,
       throwable: true,
       unparryable: true,
-      hitPoint: SteelHitPoint,
+      hitPoint: SteelHitPoint + WeaponHitPointDifference,
       twoHanded: false,
       offhand: null
     }
@@ -96,7 +96,7 @@ export const Weapons: { [key: string]: WeaponDefinition } = {
     reaching: WeaponReaching.short,
     throwable: false,
     unparryable: false,
-    hitPoint: SteelHitPoint,
+    hitPoint: SteelHitPoint + WeaponHitPointDifference,
     twoHanded: false,
     offhand: {
       name: 'Short sword',
@@ -105,7 +105,7 @@ export const Weapons: { [key: string]: WeaponDefinition } = {
       reaching: WeaponReaching.short,
       throwable: false,
       unparryable: false,
-      hitPoint: SteelHitPoint,
+      hitPoint: SteelHitPoint + WeaponHitPointDifference,
       twoHanded: false,
       offhand: null
     }
@@ -117,7 +117,7 @@ export const Weapons: { [key: string]: WeaponDefinition } = {
     reaching: WeaponReaching.long,
     throwable: false,
     unparryable: false,
-    hitPoint: SteelHitPoint,
+    hitPoint: SteelHitPoint + WeaponHitPointDifference,
     twoHanded: false,
     offhand: null
   },
@@ -128,7 +128,7 @@ export const Weapons: { [key: string]: WeaponDefinition } = {
     reaching: WeaponReaching.short,
     throwable: true,
     unparryable: false,
-    hitPoint: WoodenHitPoint,
+    hitPoint: WoodenHitPoint + WeaponHitPointDifference,
     twoHanded: false,
     offhand: {
       name: 'Handaxe',
@@ -137,7 +137,7 @@ export const Weapons: { [key: string]: WeaponDefinition } = {
       reaching: WeaponReaching.short,
       throwable: true,
       unparryable: false,
-      hitPoint: WoodenHitPoint,
+      hitPoint: WoodenHitPoint + WeaponHitPointDifference,
       twoHanded: false,
       offhand: null
     }
@@ -149,7 +149,7 @@ export const Weapons: { [key: string]: WeaponDefinition } = {
     reaching: WeaponReaching.short,
     throwable: false,
     unparryable: false,
-    hitPoint: SteelHitPoint,
+    hitPoint: SteelHitPoint + WeaponHitPointDifference,
     twoHanded: false,
     offhand: null
   },
@@ -160,7 +160,7 @@ export const Weapons: { [key: string]: WeaponDefinition } = {
     reaching: WeaponReaching.short,
     throwable: false,
     unparryable: false,
-    hitPoint: WoodenHitPoint,
+    hitPoint: WoodenHitPoint + WeaponHitPointDifference,
     twoHanded: false,
     offhand: null
   },
@@ -171,7 +171,7 @@ export const Weapons: { [key: string]: WeaponDefinition } = {
     reaching: WeaponReaching.long,
     throwable: false,
     unparryable: true,
-    hitPoint: SteelHitPoint,
+    hitPoint: SteelHitPoint + WeaponHitPointDifference,
     twoHanded: false,
     offhand: null
   },
@@ -182,18 +182,18 @@ export const Weapons: { [key: string]: WeaponDefinition } = {
     reaching: WeaponReaching.long,
     throwable: false,
     unparryable: false,
-    hitPoint: WoodenHitPoint,
+    hitPoint: WoodenHitPoint + WeaponHitPointDifference,
     twoHanded: true,
     offhand: null
   },
   greatSword: {
     name: 'Greatsword',
-    attackDices: [ DiceType.d12, DiceType.d8 ],
+    attackDices: [ DiceType.d12, DiceType.d6 ],
     parryDice: DiceType.d8,
     reaching: WeaponReaching.long,
     throwable: false,
     unparryable: false,
-    hitPoint: SteelHitPoint,
+    hitPoint: SteelHitPoint + WeaponHitPointDifference,
     twoHanded: true,
     offhand: null
   },
@@ -204,7 +204,7 @@ export const Weapons: { [key: string]: WeaponDefinition } = {
     reaching: WeaponReaching.long,
     throwable: false,
     unparryable: false,
-    hitPoint: WoodenHitPoint,
+    hitPoint: WoodenHitPoint + WeaponHitPointDifference,
     twoHanded: true,
     offhand: null
   },
@@ -215,7 +215,7 @@ export const Weapons: { [key: string]: WeaponDefinition } = {
     reaching: WeaponReaching.reaching,
     throwable: false,
     unparryable: false,
-    hitPoint: WoodenHitPoint,
+    hitPoint: WoodenHitPoint + WeaponHitPointDifference,
     twoHanded: true,
     offhand: null
   },
@@ -226,7 +226,7 @@ export const Weapons: { [key: string]: WeaponDefinition } = {
     reaching: WeaponReaching.reaching,
     throwable: false,
     unparryable: false,
-    hitPoint: WoodenHitPoint,
+    hitPoint: WoodenHitPoint + WeaponHitPointDifference,
     twoHanded: true,
     offhand: null
   }

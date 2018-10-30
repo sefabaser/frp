@@ -2,12 +2,14 @@
   display: flex;
   justify-content: space-between;
   width: 550px;
+  margin-bottom: 10px;
 }
 
 .statistics-area {
   display: flex;
   justify-content: space-between;
-  width: 1000px;
+  width: 600px;
+  margin-top: 10px;
 
   app-statistics-log {
     width: 600px;

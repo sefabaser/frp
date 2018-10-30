@@ -1,8 +1,12 @@
-<div class='field'>Block avarage: <div>{{unit?.blockCount}}</div></div>
-<div class='field'>Armor protection avarage: <div>{{unit?.protectionCount}}</div></div>
-<div class='field'>Parry avarage: <div>{{unit?.parryCount}}</div></div>
-<div class='field'>Hit avarage: <div>{{unit?.hitCount}}</div></div>
-<div class='field'>Crictical hit avarage: <div>{{unit?.cricticalHitCount}}</div></div>
-<div class='field'>Broken weapon percentage: <div>{{unit?.weaponBroken}}</div></div>
-<div class='field'>Broken shield percentage: <div>{{unit?.shieldBroken}}</div></div>
-<div class='field'>Win percentage: <div>{{unit?.win}}</div></div>
+<div class='field'>Block avarage: <div>{{unit?.blockCount | number : '1.2-2'}}</div></div>
+<div class='field'>Armor protection avarage: <div>{{unit?.protectionCount | number : '1.2-2'}}</div></div>
+<div class='field'>Parry avarage: <div>{{unit?.parryCount | number : '1.2-2'}}</div></div>
+<hr />
+<div class='field'>Hit avarage: <div>{{unit?.hitCount | number : '1.2-2'}}</div></div>
+<div class='field'>Crictical hit avarage: <div>{{unit?.cricticalHitCount | number : '1.2-2'}}</div></div>
+<div class='field'>Avarage damage dealt: <div>{{(unit?.hitCount + unit?.cricticalHitCount * 2) | number : '1.2-2'}}</div></div>
+<hr />
+<div class='field'>Broken weapon percentage: <div>{{unit?.weaponBroken | number : '1.2-2'}}%</div></div>
+<div class='field'>Broken shield percentage: <div>{{unit?.shieldBroken | number : '1.2-2'}}%</div></div>
+<hr />
+<div class='field'>Win percentage: <div>{{unit?.win | number : '1.2-2'}}%</div></div>
